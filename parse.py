@@ -28,10 +28,12 @@ valid_amino_acid_chars = {
     'W',
     'Y',
     'V',
+    # Complicates things a bit
+    '-',
 }
 
 
-def remove_whitespace(x):
+def remove_whitespace(x: str) -> str:
     return ''.join(x.split())
 
 
@@ -67,16 +69,12 @@ def main():
 
     for i, section in enumerate(sections):
 
-        prev_line = None
         first_protein_line = None
         for j, line in enumerate(section):
             if all(x in valid_amino_acid_chars for x in line.strip()):
                 first_protein_line = j
                 break
 
-            prev_line = line
-
-        assert prev_line is not None
         assert first_protein_line is not None
 
         #if verbose:
