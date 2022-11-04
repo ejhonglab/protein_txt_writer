@@ -144,6 +144,7 @@ def main():
         protein = '\n'.join(section[first_protein_line:])
 
         protein = remove_whitespace(protein)
+        assert all(x in valid_amino_acid_chars for x in protein)
 
         fname = output_dir / f'{fname_stem}.txt'
         print(f'writing to {fname}')
